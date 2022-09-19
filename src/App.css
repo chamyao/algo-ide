@@ -2,37 +2,75 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html, body, #root {
+  width: 100%;
+  height: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.LeftPane {
+  position: absolute;
+  float: left;
+  width: 50%;
+  height: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.RightPane {
+  position: absolute;
+  right: 0;
+  width: 50%;
+  height: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.WindowTopRight {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 50%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.WindowBottomRight {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50%;
+}
+
+
+.Display {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 95%;
+}
+
+.Pane {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.Header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 20px;
+  background-color: lavender;
+  z-index: 2;
+}
+
+.Body {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: calc(100% - 20px);
+  z-index: 0;
+}
+
+.FootNote {
+  position: absolute;
+  bottom: 0;
+  width: 50%;
+  height: 20px;
+  background-color: lightgreen;
+  z-index: 2;
 }

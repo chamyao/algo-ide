@@ -38,13 +38,22 @@ def get_dates(start, end):
     return dates
 
 
-def test(strategy, name, start, end, risk_free_rate=0):
+def test(strategy, name, start, end, info, risk_free_rate=0):
     assert price_history is not None, "import price history."
     global portfolio
     portfolio = Portfolio()
     initial = portfolio.value()
     prev = portfolio.value()
     logs = os.path.join(cwd, 'logs')
+
+    print("init info")
+
+    #initialize info
+    info['log'] = []
+    info['values'] = []
+    info['returns'] = []
+    info['sharpe'] = -1
+    
     if not os.path.exists(logs):
         os.mkdir(logs)
     path = os.path.join(logs, name)
@@ -60,7 +69,13 @@ def test(strategy, name, start, end, risk_free_rate=0):
         prev = portfolio.value()
         values.append(prev)
         returns.append(daily_return)
+
+        info['values'].append(prev)
+        info['returns'].append(daily_return)
+        info['sharpe'] =  math.sqrt(252) * utilities.sharpe(returns, risk_free_rate)
         if len(string) > 0:
             log.write('Datetime: ' + datetime + ' Action: ' + string + '\n')
+            info['log'].append('Datetime: ' + datetime + ' Action: ' + string + '\n')
+
     total_return = portfolio.value() / initial - 1
     return total_return, math.sqrt(252) * utilities.sharpe(returns, risk_free_rate), returns, values

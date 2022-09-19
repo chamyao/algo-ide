@@ -156,4 +156,7 @@ def download_directory(symbol_csv, start, end):
 
 def sharpe(returns, risk_free_rate):
     avg_return = statistics.mean(returns)
-    return (avg_return - risk_free_rate) / stdev(returns)
+    try:
+        return (avg_return - risk_free_rate) / stdev(returns)
+    except:
+        return -1
