@@ -2,3 +2,5 @@ This is a fullstack web app I created for a previous trading bactester project, 
 
 Development:
 Frontend: React.js, Backend: Flask (Python)
+Deployment:
+Frontend: Github Pages, Backend: Heroku
